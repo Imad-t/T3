@@ -1,6 +1,8 @@
 import { postcss } from "tailwindcss";
 import { db } from "~/server/db";
 
+// Dynamique routes
+export const dynamic ="force-dynamic";
 const imgUrls = ["https://utfs.io/f/647fd81f-c235-4cba-af29-53280d0e6514-ve28ll.png",
   "https://utfs.io/f/d7f751a9-d0ee-41f3-86d4-2848ecb4a302-jg9rdf.png",
   "https://utfs.io/f/bffbe71e-8021-4e85-ac75-8b8c14a9f107-wkf9ly.png",
