@@ -1,7 +1,10 @@
 import "~/styles/globals.css";
-
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import Navbar from "./_components/Navbar";
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -9,23 +12,17 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-function Navbar() {
-  return (
-    <nav className="bg-gray-400 text-black p-4 w-full flex items-center justify-between">
-      <div>Gallery</div>
-      <div>Sign in</div>
-    </nav>
-  );
-};
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
+    <ClerkProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <Navbar/>  
         {children}
       </body>
     </html>
+    </ClerkProvider>
   );
 }
