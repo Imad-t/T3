@@ -4,7 +4,11 @@ import {
 } from '@clerk/nextjs'
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import "@uploadthing/react/styles.css";
 import Navbar from "./_components/Navbar";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -18,6 +22,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
+      <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)}/>
       <body>
         <Navbar/>  
         {children}
