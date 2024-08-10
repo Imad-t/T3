@@ -1,8 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import {getMyImages} from "~/server/queries";
-import { postcss } from "tailwindcss";
-import { db } from "~/server/db";
-// import { images } from "~/server/db/schema";
+import Image from "next/image";
 
 // Dynamique routes
 export const dynamic ="force-dynamic";
@@ -11,9 +9,12 @@ async function Images(){
   const images = await getMyImages();
 return (
   <div className="flex flex-wrap gap-1 p-1"> 
-    {images.map((img, index ) => (
-      <div key={img.id} className="flex flex-col">
-        <img src={img.url} className="h-48" alt="image"/>
+    {images.map((img ) => (
+      <div key={img.id} className="flex flex-col h-40 w-48">       <Image src={img.url} 
+        style={{objectFit: "contain"}}
+        width={400} 
+        height={400} 
+        alt="image"/>
         <p className="text-center">{img.name}</p>
       </div>
     ))}

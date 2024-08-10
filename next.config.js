@@ -6,6 +6,10 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
+    //allow image optimization for utfs.io
+    images: {
+        remotePatterns: [{hostname:"utfs.io"}],
+    },
     typescript: {
         ignoreBuildErrors: true,
     },
