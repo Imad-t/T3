@@ -7,6 +7,7 @@ import Navbar from "./_components/Navbar";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Toaster } from "~/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -25,13 +26,14 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-        <body className={`font-sans dark`}>
-          <div className="h-screen grid grid-rows-[auto,1fr]">
+        <body className={`dark font-sans`}>
+          <div className="grid h-screen grid-rows-[auto,1fr]">
             <Navbar />
             <main className="overflow-y-scroll">{children}</main>
           </div>
           {modal}
           <div id="modal-root" />
+          <Toaster/>
         </body>
       </html>
     </ClerkProvider>
