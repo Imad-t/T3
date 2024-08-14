@@ -5,7 +5,7 @@ export default  function PhotoPage({
   params: { id: string };
 }) {
   const id = Number(photoId);
-  return( <div>
+  return( <div className="h-full">
     <FullPageImageView id={id} />
   </div>);
 }

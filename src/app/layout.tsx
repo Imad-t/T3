@@ -1,7 +1,5 @@
 import "~/styles/globals.css";
-import {
-  ClerkProvider,
-} from '@clerk/nextjs'
+import { ClerkProvider } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import "@uploadthing/react/styles.css";
@@ -17,23 +15,25 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,modal
-}: Readonly<{ 
+  children,
+  modal,
+}: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
-
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)}/>
-      <body>
-        <Navbar/>  
-        {children}
-        {modal}
-        <div id="modal-root"/>
-      </body>
-    </html>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+        <body>
+          <div className="h-screen grid grid-rows-[auto,1fr]">
+            <Navbar />
+            <main className="overflow-y-scroll">{children}</main>
+          </div>
+          {modal}
+          <div id="modal-root" />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
